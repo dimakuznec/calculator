@@ -1,59 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css">
-    <title>Calculator</title>
-</head>
-<body>
-    <div class="calculator calculator__dark">
-        <div class="calculator__display">
-            <div class="calculator__history"></div>
-            <div class="calculator__total">0</div>
-        </div>
-        <div class="control__actions">
-            <div class="control__row">
-                <div id="clear" class="calculator__col calculator__col__reset" data-type="clear">C</div>
-                <div class="calculator__col calculator__col__action"data-type="%">%</div>
-                <div class="calculator__col calculator__col__action" data-type="delete">⌫</div>
-                <div class="calculator__col calculator__col__action" data-type="/">÷</div>
-            </div>
-            <div class="control__row">
-                <div class="calculator__col" data-type="7">7</div>
-                <div class="calculator__col" data-type="8">8</div>
-                <div class="calculator__col" data-type="9">9</div>
-                <div class="calculator__col calculator__col__action" data-type="*">×</div>
-            </div>
-            <div class="control__row">
-                <div class="calculator__col" data-type="4">4</div>
-                <div class="calculator__col" data-type="5">5</div>
-                <div class="calculator__col" data-type="6">6</div>
-                <div class="calculator__col calculator__col__action" data-type="-">-</div>
-            </div>
-            <div class="control__row">
-                <div class="calculator__col" data-type="1">1</div>
-                <div class="calculator__col" data-type="2">2</div>
-                <div class="calculator__col" data-type="3">3</div>
-                <div class="calculator__col calculator__col__action" data-type="+">+</div>
-            </div>
-            <div class="control__row">
-                <div class="calculator__col" data-type="float">.</div>
-                <div class="calculator__col" data-type="0">0</div>
-                <div class="calculator__col calculator__col__action" data-type="history">
-                    <img src="history.svg" alt="">
-                </div>
-                <div class="calculator__col calculator__col__action" data-type="=">=</div>
-            </div>
-            <div id="history-panel" class="calculator__history-panel">
-               <div id="history-content" class="calculator__history-content"></div>
-                <div id="close" class="calculator__histoy-close">x</div>
-            </div>
-        </div>
-
-
-      <script src="index.js"></script>
-    </div>
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="index.css" />
+		<title>Calculator</title>
+	</head>
+	<body>
+		<div class="theme-toggle">
+			<input type="checkbox" id="theme-checkbox" />
+			<label for="theme-checkbox">Dark/Light Mode</label>
+		</div>
+		<div class="calculator calculator__dark">
+			<div class="calculator__display">
+				<div class="calculator__history"></div>
+				<div class="calculator__total">0</div>
+			</div>
+			<div class="control__actions">
+				<div class="control__row">
+					<div
+						id="clear"
+						class="calculator__col calculator__col__reset"
+						data-type="clear"
+					>
+						C
+					</div>
+					<div class="calculator__col calculator__col__action" data-type="%">
+						%
+					</div>
+					<div
+						class="calculator__col calculator__col__action"
+						data-type="delete"
+					>
+						⌫
+					</div>
+					<div class="calculator__col calculator__col__action" data-type="/">
+						÷
+					</div>
+				</div>
+				<div class="control__row">
+					<div class="calculator__col" data-type="7">7</div>
+					<div class="calculator__col" data-type="8">8</div>
+					<div class="calculator__col" data-type="9">9</div>
+					<div class="calculator__col calculator__col__action" data-type="*">
+						×
+					</div>
+				</div>
+				<div class="control__row">
+					<div class="calculator__col" data-type="4">4</div>
+					<div class="calculator__col" data-type="5">5</div>
+					<div class="calculator__col" data-type="6">6</div>
+					<div class="calculator__col calculator__col__action" data-type="-">
+						-
+					</div>
+				</div>
+				<div class="control__row">
+					<div class="calculator__col" data-type="1">1</div>
+					<div class="calculator__col" data-type="2">2</div>
+					<div class="calculator__col" data-type="3">3</div>
+					<div class="calculator__col calculator__col__action" data-type="+">
+						+
+					</div>
+				</div>
+				<div class="control__row">
+					<div class="calculator__col" data-type="float">.</div>
+					<div class="calculator__col" data-type="0">0</div>
+					<div
+						class="calculator__col calculator__col__action"
+						data-type="history"
+					>
+						<img src="history.svg" alt="History" style="filter: invert(1)" />
+					</div>
+					<div class="calculator__col calculator__col__action" data-type="=">
+						=
+					</div>
+				</div>
+				<div id="history-panel" class="calculator__history-panel">
+					<div id="history-content" class="calculator__history-content"></div>
+					<div id="close" class="calculator__histoy-close">x</div>
+				</div>
+			</div>
+			<audio
+				id="click-sound"
+				src="./audio/spacebar-click-keyboard.mp3"
+				preload="auto"
+			></audio>
+			<script src="index.js"></script>
+		</div>
+	</body>
 </html>
