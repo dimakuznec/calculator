@@ -33,24 +33,41 @@ calculator.addEventListener('click', event => {
 // Обработка клавиш нажатых на клавиатуре
 document.addEventListener('keydown', event => {
 	const key = event.key
-	if (key === 'Enter') {
+	const keysAllowed = [
+		'Enter',
+		'Backspace',
+		'C',
+		'c',
+		'.',
+		'+',
+		'-',
+		'/',
+		'*',
+		'%',
+	]
+	if ((key >= 0 && key <= 9) || keysAllowed.includes(key)) {
 		playClickSound() // Воспроизводим звук
 		const totalBlock = calculator.querySelector('.calculator__total')
 		const historyBlock = calculator.querySelector('.calculator__history')
-		operationTypeHandling('=')
+
+		if (key === 'Enter') {
+			operationTypeHandling('=')
+		} else if (key === 'Backspace') {
+			operationTypeHandling('delete')
+		} else if (key.toLowerCase() === 'c') {
+			operationTypeHandling('clear')
+		} else if (key === '.') {
+			operationTypeHandling('float')
+		} else if (['+', '-', '/', '*', '%'].includes(key)) {
+			operationTypeHandling(key)
+		} else if (key >= 0 && key <= 9) {
+			operationTypeHandling(key)
+		}
+
 		totalBlock.innerHTML = tempNumber
 		historyBlock.innerHTML = renderHistory(history)
 		historyPanelRender(allHistory)
-		event.preventDefault() // Предотвращаем отправку формы при нажатии Enter
-	} else if (key === 'Backspace') {
-		playClickSound() // Воспроизводим звук
-		const totalBlock = calculator.querySelector('.calculator__total')
-		const historyBlock = calculator.querySelector('.calculator__history')
-		operationTypeHandling('delete')
-		totalBlock.innerHTML = tempNumber
-		historyBlock.innerHTML = renderHistory(history)
-		historyPanelRender(allHistory)
-		event.preventDefault() // Предотвращаем переход на предыдущую страницу при нажатии Backspace
+		event.preventDefault()
 	}
 })
 
@@ -75,11 +92,11 @@ function operationTypeHandling(data) {
 			} else {
 				tempNumber = '0.'
 			}
+		} else if (data === 'delete' && operationType === 'number') {
+			tempNumber = tempNumber.substring(0, tempNumber.length - 1)
+			tempNumber = tempNumber ? tempNumber : '0'
+			isPercent = false
 		}
-	} else if (data === 'delete' && operationType === 'number') {
-		tempNumber = tempNumber.substring(0, tempNumber.length - 1)
-		tempNumber = tempNumber ? tempNumber : '0'
-		isPercent = false
 	} else if (['+', '-', '/', '*'].includes(data) && tempNumber) {
 		operationType = data
 		history.push(tempNumber, operationType)
